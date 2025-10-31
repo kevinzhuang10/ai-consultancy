@@ -83,7 +83,7 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl mb-6">
-              Custom AI agents that scale your business
+              Scale your business with custom AI agents
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed">
               We build custom AI agents that automate your most time-consuming
