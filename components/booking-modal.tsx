@@ -9,7 +9,7 @@ interface BookingModalProps {
   triggerClassName?: string;
 }
 
-const CAL_LINK = "https://cal.com/kevinzhuang10/10x-agents-consultation";
+const CAL_LINK = "https://cal.com/kevinzhuang10/ai-consultation";
 
 export function BookingModal({
   triggerText,
