@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Forward Motion Lab - Custom AI Agents",
+  title: "Super Motion Lab - Custom AI Agents",
   description: "Transform your business with custom AI automation",
 };
 

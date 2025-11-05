@@ -38,7 +38,7 @@ export default function Home() {
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
           <div className="flex items-center gap-2 font-semibold text-xl">
             <Bot className="h-6 w-6" />
-            <span>Forward Motion Lab</span>
+            <span>Super Motion Lab</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a
@@ -660,7 +660,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 font-semibold text-lg mb-4">
                 <Bot className="h-5 w-5" />
-                <span>Forward Motion Lab</span>
+                <span>Super Motion Lab</span>
               </div>
               <p className="text-sm text-muted-foreground">
                 Building the future of business automation with custom AI
@@ -777,7 +777,7 @@ export default function Home() {
           </div>
           <div className="border-t pt-8 text-center text-sm text-muted-foreground">
             <p>
-              &copy; {new Date().getFullYear()} Forward Motion Lab. All rights
+              &copy; {new Date().getFullYear()} Super Motion Lab. All rights
               reserved.
             </p>
           </div>
