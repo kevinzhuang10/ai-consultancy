@@ -16,6 +16,7 @@ import {
   TrendingUp,
   Search,
 } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -52,15 +53,11 @@ export default function Home() {
             >
               Use Cases
             </a>
-            <a
-              href="#process"
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              How We Work
-            </a>
           </div>
           <div className="flex items-center gap-2">
-            <BookingModal triggerText="Get In Touch" triggerSize="sm" />
+            <Link href="/get-started">
+              <Button size="sm">Get In Touch</Button>
+            </Link>
             <Button
               variant="ghost"
               size="icon"
@@ -88,11 +85,11 @@ export default function Home() {
               that works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <BookingModal
-                triggerText="Book a Free Consultation"
-                triggerSize="lg"
-                triggerClassName="text-base"
-              />
+              <Link href="/get-started">
+                <Button size="lg" className="text-base">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -168,7 +165,7 @@ export default function Home() {
             <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <CardHeader>
                 <Users className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Engineering as a service</CardTitle>
+                <CardTitle>Engineering as a Service</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
@@ -268,12 +265,11 @@ export default function Home() {
             <Card>
               <CardHeader>
                 <Search className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Research Agent</CardTitle>
+                <CardTitle>Custom Software Development</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Gather, synthesize, and analyze information across sources
-                  faster than any human could.
+                  Tailored solutions for your unique business needs.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -340,20 +336,20 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-background border p-8 md:p-12 lg:p-16">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                Ready to get started?
+                Ready to transform your business with AI?
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
                 We provide free AI strategy / training sessions. Book a call to
                 discuss how we can help.
               </p>
               <p className="text-sm font-semibold text-primary mb-8">
-                We respond within 1 hour.
+                Avergage response time: ~ 47 minutes
               </p>
-              <BookingModal
-                triggerText="Book Your Free Session"
-                triggerSize="lg"
-                triggerClassName="text-base"
-              />
+              <Link href="/get-started">
+                <Button size="lg" className="text-base">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
