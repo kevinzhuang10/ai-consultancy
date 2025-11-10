@@ -1,21 +1,20 @@
 "use client";
-// Testing automatic Vercel deployment
 
 import {
   Bot,
-  Zap,
-  Cog,
-  Lightbulb,
-  BarChart3,
-  Shield,
   Moon,
   Sun,
-  Briefcase,
-  Megaphone,
+  Target,
+  GraduationCap,
+  Code2,
+  Zap,
+  Users,
   Headphones,
   Phone,
-  Package,
-  Sparkles,
+  Video,
+  FileText,
+  TrendingUp,
+  Search,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -37,10 +36,16 @@ export default function Home() {
       <nav className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
           <div className="flex items-center gap-2 font-semibold text-xl">
-            <Bot className="h-6 w-6" />
-            <span>Super Motion</span>
+            {/* <Bot className="h-6 w-6" /> */}
+            <span>Supermake</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
+            <a
+              href="#services"
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
+              Services
+            </a>
             <a
               href="#use-cases"
               className="text-sm font-medium hover:text-primary transition-colors"
@@ -48,16 +53,10 @@ export default function Home() {
               Use Cases
             </a>
             <a
-              href="#case-studies"
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              Case Studies
-            </a>
-            <a
               href="#process"
               className="text-sm font-medium hover:text-primary transition-colors"
             >
-              How It Works
+              How We Work
             </a>
           </div>
           <div className="flex items-center gap-2">
@@ -79,16 +78,14 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background -z-10" />
         <div className="container mx-auto max-w-7xl px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl mb-6">
-              Scale your business with custom AI agents
+              We bring AI from idea to production.
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed">
-              We build custom AI agents that automate your most time-consuming
-              workflows, <br />
-              so your team can focus on what matters.
+              Strategy, implementation, and launch. We help companies deploy AI
+              that works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <BookingModal
@@ -96,9 +93,6 @@ export default function Home() {
                 triggerSize="lg"
                 triggerClassName="text-base"
               />
-              {/* <Button size="lg" variant="outline" className="text-base">
-                View Case Studies
-              </Button> */}
             </div>
           </div>
         </div>
@@ -107,9 +101,9 @@ export default function Home() {
       {/* Social Proof */}
       <section className="py-12 border-y bg-muted/30">
         <div className="container mx-auto max-w-7xl px-4">
-          <p className="text-center text-lg font-medium text-muted-foreground mb-8">
+          {/* <p className="text-center text-lg font-medium text-muted-foreground mb-8">
             Built by engineers from
-          </p>
+          </p> */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-50">
             {["Y Combinator", "HeyGen", "Uber", "UC Berkeley"].map(
               (company) => (
@@ -122,434 +116,206 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      {/* <section id="services" className="py-16 md:py-24 lg:py-32">
+      {/* What We Do */}
+      <section id="services" className="py-16 md:py-24 lg:py-32">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Solutions that drive results
+              Our Services
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Purpose-built AI services that eliminate bottlenecks and
-              accelerate your business
-            </p>
+            {/* <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We&apos;re your AI partner. From defining your strategy to
+              deploying production-ready solutions.
+            </p> */}
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card>
+          <div className="flex flex-wrap justify-center gap-6">
+            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <CardHeader>
-                <Bot className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Custom AI Agents</CardTitle>
+                <Target className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>AI Strategy</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Intelligent agents that automate complex workflows, handle
-                  customer interactions, and integrate seamlessly with your
-                  existing systems.
+                  Identify areas for AI transformation. Develop AI strategy
+                  roadmap tailored to your business.
                 </CardDescription>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <CardHeader>
+                <Code2 className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Product Development</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Integrate AI features into your product. Bring new
+                  capabilities that delight customers.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <CardHeader>
                 <Zap className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Workflow Audit & Automation</CardTitle>
+                <CardTitle>Workflow Automation</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Identify system bottlenecks and implement targeted automations
-                  that eliminate repetitive tasks and accelerate operations.
+                  Streamline operations with AI. Scale your output without
+                  scaling headcount.
                 </CardDescription>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <CardHeader>
-                <Cog className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Document Processing</CardTitle>
+                <Users className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Engineering as a service</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Extract, classify, and process data from complex documents
-                  automatically, handling unstructured formats with intelligent
-                  parsing.
+                  Top-tier engineers to augment your team and help execute your
+                  product roadmap.
                 </CardDescription>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <CardHeader>
-                <Lightbulb className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Consulting & Strategy</CardTitle>
+                <GraduationCap className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Trainings & Workshops</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Expert guidance on AI transformation roadmaps, implementation
-                  strategy, and identifying high-impact automation opportunities
-                  for your business.
+                  Upskill your team on AI knowledge. Hands-on workshops that get
+                  them going with AI.
                 </CardDescription>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Use Cases */}
-      <section id="use-cases" className="py-16 md:py-24 lg:py-32 bg-muted/30">
-        <div className="container mx-auto max-w-7xl px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              What we can build together
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Example use cases to help you get started with AI
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <Briefcase className="h-12 w-12 mb-3 text-blue-600 dark:text-blue-400" />
-                <CardTitle className="text-2xl font-bold">Sales</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-base font-medium text-muted-foreground">
-                  <li>• Lead generation</li>
-                  <li>• Automated outreach</li>
-                  <li>• Inbound lead qualification</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <Megaphone className="h-12 w-12 mb-3 text-purple-600 dark:text-purple-400" />
-                <CardTitle className="text-2xl font-bold">Marketing</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-base font-medium text-muted-foreground">
-                  <li>• Market research</li>
-                  <li>• Competitor monitoring</li>
-                  <li>• Content creation pipeline</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <Headphones className="h-12 w-12 mb-3 text-green-600 dark:text-green-400" />
-                <CardTitle className="text-2xl font-bold">
-                  Customer Support
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-base font-medium text-muted-foreground">
-                  <li>• Tier-1 support ticket automation</li>
-                  <li>• Knowledge base integration</li>
-                  <li>• Voice agent</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <Package className="h-12 w-12 mb-3 text-orange-600 dark:text-orange-400" />
-                <CardTitle className="text-2xl font-bold">Operations</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-base font-medium text-muted-foreground">
-                  <li>• Document processing</li>
-                  <li>• Invoice reconciliation</li>
-                  <li>• Data entry automation</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <Phone className="h-12 w-12 mb-3 text-cyan-600 dark:text-cyan-400" />
-                <CardTitle className="text-2xl font-bold">
-                  Voice Agents
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-base font-medium text-muted-foreground">
-                  <li>• Customer support</li>
-                  <li>• Receptionist</li>
-                  <li>• Screening & routing</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <Sparkles className="h-12 w-12 mb-3 text-primary" />
-                <CardTitle className="text-2xl font-bold">
-                  Custom Solutions
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-base font-medium text-muted-foreground">
-                  <li>• Bespoke AI agents</li>
-                  <li>• Industry-specific workflows</li>
-                  <li>• Custom integrations</li>
-                </ul>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Case Studies */}
-      <section id="case-studies" className="py-16 md:py-24 lg:py-32">
+      {/* Example Use Cases */}
+      <section id="use-cases" className="py-16 md:py-24 lg:py-32 bg-muted/30">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              See what's possible: ROI scenarios
+              Example Use Cases
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              *Projected outcomes based on industry data and our technical
-              capabilities.
+              We support a wide array of AI applications & use cases
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="hover:scale-[1.02] transition-transform relative">
-              <div className="absolute top-4 right-4 text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                Potential ROI Example
-              </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
               <CardHeader>
-                <CardTitle>E-commerce Brand</CardTitle>
-                <CardDescription className="text-base">
-                  Customer Support Agent
-                </CardDescription>
+                <Headphones className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Customer Support Agent</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm font-semibold mb-1">Challenge</p>
-                    <p className="text-sm text-muted-foreground">
-                      Support team drowning in 15,000+ monthly tickets about
-                      order status, returns, and product info. Average response
-                      time: 6-8 hours. Customer satisfaction suffering.
-                    </p>
-                  </div>
-                  <div className="pt-3 border-t space-y-3">
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">200x</p>
-                      <p className="text-sm text-muted-foreground">
-                        faster response time (4hrs → 60 seconds)
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">80%</p>
-                      <p className="text-sm text-muted-foreground">
-                        of queries automated
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">$40k</p>
-                      <p className="text-sm text-muted-foreground">
-                        annual savings (57% cost reduction)
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-4">
-                    <BookingModal
-                      triggerText="Learn More"
-                      triggerSize="sm"
-                      triggerVariant="outline"
-                      triggerClassName="w-full"
-                    />
-                  </div>
-                </div>
+                <CardDescription>
+                  Automate responses and resolve common issues 24/7 with
+                  intelligent AI agents.
+                </CardDescription>
               </CardContent>
             </Card>
-
-            <Card className="hover:scale-[1.02] transition-transform relative">
-              <div className="absolute top-4 right-4 text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                Potential ROI Example
-              </div>
+            <Card>
               <CardHeader>
-                <CardTitle>B2B Software Company</CardTitle>
-                <CardDescription className="text-base">
-                  Lead Generation & Sales Automation
-                </CardDescription>
+                <Phone className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Voice AI Customer Intake</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm font-semibold mb-1">Challenge</p>
-                    <p className="text-sm text-muted-foreground">
-                      Small team trying to scale outbound. Spending 20+
-                      hours/week manually prospecting, researching, and
-                      personalizing outreach. But only reaching 50-75 prospects.
-                    </p>
-                  </div>
-                  <div className="pt-3 border-t space-y-3">
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">5x</p>
-                      <p className="text-sm text-muted-foreground">
-                        increase in outreach volume
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">3x</p>
-                      <p className="text-sm text-muted-foreground">
-                        more meetings booked per month
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">$250k</p>
-                      <p className="text-sm text-muted-foreground">
-                        in new pipeline opportunities
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-4">
-                    <BookingModal
-                      triggerText="Learn More"
-                      triggerSize="sm"
-                      triggerVariant="outline"
-                      triggerClassName="w-full"
-                    />
-                  </div>
-                </div>
+                <CardDescription>
+                  Collect information and onboard customers through natural
+                  voice conversations.
+                </CardDescription>
               </CardContent>
             </Card>
-
-            <Card className="hover:scale-[1.02] transition-transform relative">
-              <div className="absolute top-4 right-4 text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                Potential ROI Example
-              </div>
+            <Card>
               <CardHeader>
-                <CardTitle>Healthcare Service Provider</CardTitle>
-                <CardDescription className="text-base">
-                  Voice AI Receptionist
-                </CardDescription>
+                <Video className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>AI Video Generation</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm font-semibold mb-1">Challenge</p>
-                    <p className="text-sm text-muted-foreground">
-                      Front desk overwhelmed with 500+ calls/week for
-                      appointments and basic questions. Patients waiting 5-10
-                      minutes on hold. After-hours calls going to voicemail.
-                    </p>
-                  </div>
-                  <div className="pt-3 border-t space-y-3">
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">24/7</p>
-                      <p className="text-sm text-muted-foreground">
-                        availability (vs business hours only)
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">70%</p>
-                      <p className="text-sm text-muted-foreground">
-                        of routine calls handled by AI
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">$45k</p>
-                      <p className="text-sm text-muted-foreground">
-                        annual savings in staffing costs
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-4">
-                    <BookingModal
-                      triggerText="Learn More"
-                      triggerSize="sm"
-                      triggerVariant="outline"
-                      triggerClassName="w-full"
-                    />
-                  </div>
-                </div>
+                <CardDescription>
+                  Create personalized videos at scale for marketing, training,
+                  or customer communication.
+                </CardDescription>
               </CardContent>
             </Card>
-
-            <Card className="hover:scale-[1.02] transition-transform relative">
-              <div className="absolute top-4 right-4 text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                Potential ROI Example
-              </div>
+            <Card>
               <CardHeader>
-                <CardTitle>Financial Service Firm</CardTitle>
-                <CardDescription className="text-base">
-                  Intelligent Document Processing
-                </CardDescription>
+                <FileText className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>High Volume Document Processing</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm font-semibold mb-1">Challenge</p>
-                    <p className="text-sm text-muted-foreground">
-                      Processing 800+ invoices monthly with manual data entry.
-                      Finance team spending 120+ hours/month on reconciliation
-                      with 5-8% error rate.
-                    </p>
-                  </div>
-                  <div className="pt-3 border-t space-y-3">
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">90%</p>
-                      <p className="text-sm text-muted-foreground">
-                        reduction in processing time
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">1.2%</p>
-                      <p className="text-sm text-muted-foreground">
-                        error rate (down from 8%)
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <p className="text-3xl font-bold text-primary">$67k+</p>
-                      <p className="text-sm text-muted-foreground">
-                        annual savings + avoided duplicates
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-4">
-                    <BookingModal
-                      triggerText="Learn More"
-                      triggerSize="sm"
-                      triggerVariant="outline"
-                      triggerClassName="w-full"
-                    />
-                  </div>
-                </div>
+                <CardDescription>
+                  Extract and analyze data from thousands of documents in
+                  minutes, not days.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <TrendingUp className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Sales Workflow Automation</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Automate lead qualification, follow-ups, and CRM updates to
+                  let your team focus on selling.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <Search className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Research Agent</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Gather, synthesize, and analyze information across sources
+                  faster than any human could.
+                </CardDescription>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* How We Work */}
       <section id="process" className="py-16 md:py-24 lg:py-32">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              How it works
-            </h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">How We Work</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A structured approach to delivering results
+              We function as your AI partner, helping you with AI strategy and
+              execution.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 number: "01",
-                title: "Audit",
+                title: "AI Strategy",
                 description:
-                  "Analyze your business needs and identify top AI opportunities.",
+                  "Identity AI opportunities and develop execution roadmap.",
               },
               {
                 number: "02",
-                title: "Develop",
+                title: "Implementation",
                 description:
-                  "Develop custom AI solutions that align with your business objectives.",
+                  "Design and build production-ready solutions alongside your team.",
               },
               {
                 number: "03",
-                title: "Optimize",
+                title: "Launch",
                 description:
-                  "Monitor results and continously optimize agent performance.",
+                  "Deploy to production and validate performance at scale.",
               },
               {
                 number: "04",
-                title: "Scale",
+                title: "Iterate & Innovate",
                 description:
-                  "Uncover more system bottlenecks and deploy AI agents across your org.",
+                  "Continue evolving your AI capabilities and execute your AI roadmap together.",
               },
             ].map((step) => (
               <Card key={step.number}>
@@ -568,83 +334,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits */}
-      {/* <section id="benefits" className="py-16 md:py-24 lg:py-32 bg-muted/30">
-        <div className="container mx-auto max-w-7xl px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              The 10x Agents Difference
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Why leading companies choose to work with us
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-8">
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <Shield className="h-12 w-12 mb-3 text-primary" />
-                <CardTitle className="text-2xl font-bold">
-                  World-Class Engineering
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base font-medium">
-                  Our team has built and scaled some of the world's most popular
-                  products at companies like Uber and HeyGen. We bring
-                  world-class engineering to your AI automation.
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <Zap className="h-12 w-12 mb-3 text-primary" />
-                <CardTitle className="text-2xl font-bold">
-                  Move fast and iterate
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base font-medium">
-                  No months of planning and strategizing. We believe in shipping
-                  fast and iterating. We aim to deploy your first agent in 2-4
-                  weeks, so we can measure, optimize, and see ROI sooner.
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="hover:scale-[1.02] transition-transform">
-              <CardHeader className="pb-4">
-                <BarChart3 className="h-12 w-12 mb-3 text-primary" />
-                <CardTitle className="text-2xl font-bold">
-                  ROI Focused
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base font-medium">
-                  We measure every automation's impact on efficiency and
-                  performance. Continuous monitoring and optimization keeps us
-                  accountable to delivering measurable results for your
-                  business.
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section> */}
-
       {/* CTA Section */}
       <section className="py-16 md:py-24 lg:py-32">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-background border p-8 md:p-12 lg:p-16">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                Ready to transform your business with AI?
+                Ready to get started?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Schedule a free consultation to discuss your automation needs{" "}
-                <br />
-                and see how much you can save using AI.
+              <p className="text-lg text-muted-foreground mb-6">
+                We provide free AI strategy / training sessions. Book a call to
+                discuss how we can help.
+              </p>
+              <p className="text-sm font-semibold text-primary mb-8">
+                We respond within 1 hour.
               </p>
               <BookingModal
-                triggerText="Book Your Free Consultation"
+                triggerText="Book Your Free Session"
                 triggerSize="lg"
                 triggerClassName="text-base"
               />
@@ -656,15 +362,14 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t py-12 md:py-16">
         <div className="container mx-auto max-w-7xl px-4">
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 font-semibold text-lg mb-4">
-                <Bot className="h-5 w-5" />
-                <span>Super Motion</span>
+                {/* <Bot className="h-5 w-5" /> */}
+                <span>Supermake</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Building the future of business automation with custom AI
-                agents.
+                Your AI strategy + execution partner
               </p>
             </div>
             <div>
@@ -672,15 +377,23 @@ export default function Home() {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a
-                    href="#services"
+                    href="#use-cases"
                     className="hover:text-foreground transition-colors"
                   >
-                    Custom AI Agents
+                    AI Strategy & Roadmap
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#services"
+                    href="#use-cases"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Product Development
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#use-cases"
                     className="hover:text-foreground transition-colors"
                   >
                     Workflow Automation
@@ -688,60 +401,23 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#services"
+                    href="#use-cases"
                     className="hover:text-foreground transition-colors"
                   >
-                    Document Processing
+                    Engineering as a Serivce
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#services"
+                    href="#use-cases"
                     className="hover:text-foreground transition-colors"
                   >
-                    Consulting & Strategy
+                    Trainings & Workshops
                   </a>
                 </li>
               </ul>
             </div>
-            <div>
-              <h3 className="font-semibold mb-4">Use Cases</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a
-                    href="#use-cases"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    Sales
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#use-cases"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    Marketing
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#use-cases"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    Customer Support
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#use-cases"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    Operations
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
+            {/* <div>
               <h3 className="font-semibold mb-4">Connect</h3>
               <div className="flex gap-4">
                 <a
@@ -773,12 +449,11 @@ export default function Home() {
                   </svg>
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="border-t pt-8 text-center text-sm text-muted-foreground">
             <p>
-              &copy; {new Date().getFullYear()} Super Motion. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} Supermake. All rights reserved.
             </p>
           </div>
         </div>

@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Super Motion - AI Product Studio",
-  description: "Your secret weapon for building AI products",
+  title: "Supermake - AI Product Studio",
+  description: "We build AI products: from idea to production",
 };
 
 export default function RootLayout({
