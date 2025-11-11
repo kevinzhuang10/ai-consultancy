@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Bot,
   Moon,
@@ -11,10 +12,9 @@ import {
   Users,
   Headphones,
   Phone,
-  Video,
   FileText,
   TrendingUp,
-  Search,
+  Check,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -25,11 +25,68 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { useTheme } from "@/components/theme-provider";
 import { BookingModal } from "@/components/booking-modal";
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    needs: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Submit to Google Sheets via API route
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      setSubmitStatus("success");
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        needs: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -55,7 +112,7 @@ export default function Home() {
             </a>
           </div>
           <div className="flex items-center gap-2">
-            <Link href="/get-started">
+            <Link href="#contact">
               <Button size="sm">Get In Touch</Button>
             </Link>
             <Button
@@ -78,14 +135,14 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl mb-6">
-              We bring AI from idea to production.
+              We take AI from idea to production.
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed">
-              Strategy, implementation, and launch. We help companies deploy AI
-              that works.
+              Strategize, implement, and launch. We help companies deploy AI
+              solutions that work at scale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/get-started">
+              <Link href="#contact">
                 <Button size="lg" className="text-base">
                   Get Started
                 </Button>
@@ -138,18 +195,7 @@ export default function Home() {
                 </CardDescription>
               </CardContent>
             </Card>
-            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-              <CardHeader>
-                <Code2 className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Product Development</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>
-                  Integrate AI features into your product. Bring new
-                  capabilities that delight customers.
-                </CardDescription>
-              </CardContent>
-            </Card>
+
             <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <CardHeader>
                 <Zap className="h-10 w-10 mb-2 text-primary" />
@@ -159,6 +205,18 @@ export default function Home() {
                 <CardDescription>
                   Streamline operations with AI. Scale your output without
                   scaling headcount.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <CardHeader>
+                <Code2 className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Product Development</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Integrate AI features into your product. Bring new
+                  capabilities that delight customers.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -216,6 +274,18 @@ export default function Home() {
             </Card>
             <Card>
               <CardHeader>
+                <TrendingUp className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Sales Workflow Automation</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Automate lead qualification, follow-ups, and CRM updates to
+                  let your team focus on selling.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
                 <Phone className="h-10 w-10 mb-2 text-primary" />
                 <CardTitle>Voice AI Customer Intake</CardTitle>
               </CardHeader>
@@ -228,13 +298,13 @@ export default function Home() {
             </Card>
             <Card>
               <CardHeader>
-                <Video className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>AI Video Generation</CardTitle>
+                <Bot className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Research Agent</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Create personalized videos at scale for marketing, training,
-                  or customer communication.
+                  AI-powered research agents that gather, analyze, and
+                  synthesize information to provide actionable insights.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -250,21 +320,10 @@ export default function Home() {
                 </CardDescription>
               </CardContent>
             </Card>
+
             <Card>
               <CardHeader>
-                <TrendingUp className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Sales Workflow Automation</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>
-                  Automate lead qualification, follow-ups, and CRM updates to
-                  let your team focus on selling.
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Search className="h-10 w-10 mb-2 text-primary" />
+                <Code2 className="h-10 w-10 mb-2 text-primary" />
                 <CardTitle>Custom Software Development</CardTitle>
               </CardHeader>
               <CardContent>
@@ -311,7 +370,7 @@ export default function Home() {
                 number: "04",
                 title: "Iterate & Innovate",
                 description:
-                  "Continue evolving your AI capabilities and execute your AI roadmap together.",
+                  "Continue evolving your AI capabilities and execute your AI roadmap.",
               },
             ].map((step) => (
               <Card key={step.number}>
@@ -330,26 +389,154 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 lg:py-32">
+      {/* CTA Section - Version 1 (Current - Form-based) */}
+      {/* <section id="contact" className="py-16 md:py-24 lg:py-32">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                Ready to transform your business with AI?
+              </h2>
+              <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed">
+                Whether it's AI strategy development or hands-on implementation,
+                we've got you covered.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 text-primary">✓</div>
+                  <p className="text-base sm:text-lg">
+                    AI strategy & roadmap development
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 text-primary">✓</div>
+                  <p className="text-base sm:text-lg">Workflow automation</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 text-primary">✓</div>
+                  <p className="text-base sm:text-lg">AI product development</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 text-primary">✓</div>
+                  <p className="text-base sm:text-lg">
+                    Engineering as a service
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 text-primary">✓</div>
+                  <p className="text-base sm:text-lg">
+                    AI trainings & workshops
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              {submitStatus === "success" ? (
+                <div className="bg-background rounded-lg border p-8 text-center shadow-lg">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mx-auto mb-4">
+                    <Check className="h-8 w-8 text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-bold mb-2">Thank you!</h2>
+                  <p className="text-muted-foreground mb-6">
+                    We've received your information. Our team will contact you
+                    within 1-2 business days.
+                  </p>
+                  <Button onClick={() => setSubmitStatus("idle")}>
+                    Submit another request
+                  </Button>
+                </div>
+              ) : (
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-background rounded-lg border p-6 shadow-lg space-y-4"
+                >
+                  {submitStatus === "error" && (
+                    <div className="bg-destructive/10 border border-destructive/20 rounded-md p-4 text-sm text-destructive">
+                      Something went wrong. Please try again or contact us
+                      directly.
+                    </div>
+                  )}
+
+                  <div className="space-y-2">
+                    <Label htmlFor="fullName">
+                      Full Name <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email">
+                      Work Email <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="john@company.com"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="needs">
+                      Tell us about your needs{" "}
+                      <span className="text-destructive">*</span>
+                    </Label>
+                    <Textarea
+                      id="needs"
+                      name="needs"
+                      value={formData.needs}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Describe your goals and challenges..."
+                      rows={4}
+                    />
+                  </div>
+
+                  <div className="pt-2">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full"
+                      size="lg"
+                    >
+                      {isSubmitting ? "Submitting..." : "Submit"}
+                    </Button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* CTA Section - Version 2 (Original - BookingModal) */}
+      <section id="contact" className="py-16 md:py-24 lg:py-32">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-background border p-8 md:p-12 lg:p-16">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                 Ready to transform your business with AI?
               </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                We provide free AI strategy / training sessions. Book a call to
-                discuss how we can help.
+              <p className="text-lg text-muted-foreground mb-8">
+                Schedule a free consultation to discuss your needs and see how
+                we can help.
               </p>
-              <p className="text-sm font-semibold text-primary mb-8">
-                Avergage response time: ~ 47 minutes
-              </p>
-              <Link href="/get-started">
-                <Button size="lg" className="text-base">
-                  Get Started
-                </Button>
-              </Link>
+              <BookingModal
+                triggerText="Book A Free Consultation"
+                triggerSize="lg"
+                triggerClassName="text-base"
+              />
             </div>
           </div>
         </div>
@@ -368,7 +555,7 @@ export default function Home() {
                 Your AI strategy + execution partner
               </p>
             </div>
-            <div>
+            {/* <div>
               <h3 className="font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
@@ -412,7 +599,7 @@ export default function Home() {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
             {/* <div>
               <h3 className="font-semibold mb-4">Connect</h3>
               <div className="flex gap-4">
@@ -447,7 +634,7 @@ export default function Home() {
               </div>
             </div> */}
           </div>
-          <div className="border-t pt-8 text-center text-sm text-muted-foreground">
+          <div className="pt-8 text-center text-sm text-muted-foreground">
             <p>
               &copy; {new Date().getFullYear()} Supermake. All rights reserved.
             </p>

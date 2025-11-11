@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Check } from "lucide-react";
 import Link from "next/link";
@@ -13,8 +12,6 @@ export default function GetStartedPage() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    jobTitle: "",
-    revenue: "",
     needs: "",
   });
 
@@ -37,11 +34,18 @@ export default function GetStartedPage() {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call - replace with your actual endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Submit to Google Sheets via API route
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Here you would typically send the data to your backend
-      console.log("Form submitted:", formData);
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
 
       setSubmitStatus("success");
 
@@ -49,8 +53,6 @@ export default function GetStartedPage() {
       setFormData({
         fullName: "",
         email: "",
-        jobTitle: "",
-        revenue: "",
         needs: "",
       });
     } catch (error) {
@@ -117,11 +119,11 @@ export default function GetStartedPage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="mt-1 text-primary">✓</div>
-                  <p className="text-base sm:text-lg">AI product development</p>
+                  <p className="text-base sm:text-lg">Workflow automation</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="mt-1 text-primary">✓</div>
-                  <p className="text-base sm:text-lg">Workflow automation</p>
+                  <p className="text-base sm:text-lg">AI product development</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="mt-1 text-primary">✓</div>
@@ -132,7 +134,7 @@ export default function GetStartedPage() {
                 <div className="flex items-start gap-3">
                   <div className="mt-1 text-primary">✓</div>
                   <p className="text-base sm:text-lg">
-                    Free AI trainings & workshops
+                    AI trainings & workshops
                   </p>
                 </div>
               </div>
@@ -195,43 +197,6 @@ export default function GetStartedPage() {
                       required
                       placeholder="john@company.com"
                     />
-                  </div>
-
-                  {/* Job Title */}
-                  <div className="space-y-2">
-                    <Label htmlFor="jobTitle">
-                      Job Title <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="jobTitle"
-                      name="jobTitle"
-                      value={formData.jobTitle}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="CEO"
-                    />
-                  </div>
-
-                  {/* Annual Revenue */}
-                  <div className="space-y-2">
-                    <Label htmlFor="revenue">
-                      Annual Revenue <span className="text-destructive">*</span>
-                    </Label>
-                    <Select
-                      id="revenue"
-                      name="revenue"
-                      value={formData.revenue}
-                      onChange={handleInputChange}
-                      required
-                    >
-                      <option value="">Select revenue range</option>
-                      <option value="<$1M">&lt;$1M</option>
-                      <option value="$1M-$5M">$1M-$5M</option>
-                      <option value="$5M-$10M">$5M-$10M</option>
-                      <option value="$10M-$50M">$10M-$50M</option>
-                      <option value="$50M-$100M">$50M-$100M</option>
-                      <option value=">$100M">&gt;$100M</option>
-                    </Select>
                   </div>
 
                   {/* Needs Description */}
