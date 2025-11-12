@@ -600,11 +600,11 @@ export default function Home() {
                 </li>
               </ul>
             </div> */}
-            {/* <div>
-              <h3 className="font-semibold mb-4">Connect</h3>
+            <div>
+              <h3 className="font-semibold mb-4">hello@supermake.io</h3>
               <div className="flex gap-4">
                 <a
-                  href="https://www.linkedin.com/in/kevinzhuang10/"
+                  href="https://www.linkedin.com/company/supermake"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -632,7 +632,7 @@ export default function Home() {
                   </svg>
                 </a>
               </div>
-            </div> */}
+            </div>
           </div>
           <div className="pt-8 text-center text-sm text-muted-foreground">
             <p>
