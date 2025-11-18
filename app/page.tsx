@@ -220,7 +220,7 @@ export default function Home() {
                 </CardDescription>
               </CardContent>
             </Card>
-            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+            {/* <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <CardHeader>
                 <Users className="h-10 w-10 mb-2 text-primary" />
                 <CardTitle>Engineering as a Service</CardTitle>
@@ -231,8 +231,8 @@ export default function Home() {
                   product roadmap.
                 </CardDescription>
               </CardContent>
-            </Card>
-            <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+            </Card> */}
+            {/* <Card className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <CardHeader>
                 <GraduationCap className="h-10 w-10 mb-2 text-primary" />
                 <CardTitle>Trainings & Workshops</CardTitle>
@@ -243,7 +243,7 @@ export default function Home() {
                   them going with AI.
                 </CardDescription>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </section>
